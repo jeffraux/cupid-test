@@ -19,6 +19,10 @@ export interface DropdownProps {
   selected?: string;
   /** selected value string */
   list: ListItem[];
+  /** handle onChange event */
+  onChange: (listItem: ListItem) => void
+  /** loading state */
+  loading?: boolean;
 };
 
 export type Country = ListItem;
