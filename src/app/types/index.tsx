@@ -7,6 +7,11 @@ export interface ButtonProps extends React.ComponentProps<'button'> {
   icon?: React.ReactNode;
 };
 
+export interface InputProps extends React.ComponentProps<'input'> {
+  /** If button is in disabled state */
+  disabled?: boolean;
+};
+
 export type ListItem = {
   id: number;
   value: string;
@@ -23,6 +28,10 @@ export interface DropdownProps {
   onChange: (listItem: ListItem) => void
   /** loading state */
   loading?: boolean;
+  /** If search field will display the icon button */
+  showButton?: boolean;
+  /** custom class names for input component */
+  inputClassName?: string;
 };
 
 export type Country = ListItem;
