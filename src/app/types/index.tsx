@@ -17,19 +17,23 @@ export type ListItem = {
   value: string;
 }
 
-export interface DropdownProps {
+export interface SearchDropdownProps {
   /** displayed string if no item is selected */
   placeholder?: string;
   /** selected value string */
   list: ListItem[];
-  /** handle onChange event */
-  onChange: (listItem: ListItem) => void
+  /** If search button is in disabled state */
+  searchDisabled?: boolean;
   /** loading state */
   loading?: boolean;
   /** If search field will display the icon button */
   showButton?: boolean;
   /** custom class names for input component */
   inputClassName?: string;
+
+  searchKey: string;
+  onChangeSelect: (listItem: ListItem) => void;
+  onChangeInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export type Country = ListItem;
