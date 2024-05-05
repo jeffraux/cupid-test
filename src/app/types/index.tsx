@@ -7,9 +7,26 @@ export interface ButtonProps extends React.ComponentProps<'button'> {
   icon?: React.ReactNode;
 };
 
+export type ListItem = {
+  id: number;
+  value: string;
+}
+
 export interface DropdownProps {
   /** displayed string if no item is selected */
   placeholder?: string;
-  /** displayed string if no item is selected */
+  /** selected value string */
   selected?: string;
+  /** selected value string */
+  list: ListItem[];
+};
+
+export type Country = ListItem;
+export type State = ListItem;
+
+export interface FormProps {
+  /** list of Countries */
+  countries: Country[];
+  /** list of States */
+  states: State[];
 }
