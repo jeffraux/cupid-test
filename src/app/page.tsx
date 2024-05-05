@@ -80,11 +80,11 @@ const Home = () => {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
+    <main className="flex min-h-screen flex-col items-center justify-center md:p-24 p-6">
       <form className="mx-auto">
         <div className="flex">
           <SearchDropdown
-            placeholder="Search country"
+            placeholder="Country"
             list={countries}
             loading={loading}
             inputClassName="rounded-s-lg"
@@ -93,7 +93,7 @@ const Home = () => {
             onChangeInput={(event) => handleChangeInput('country', event)}
           />
           <SearchDropdown
-            placeholder="Search state"
+            placeholder="State"
             list={states}
             loading={loading}
             showButton
@@ -112,7 +112,7 @@ const Home = () => {
         </div>
       </form>
       {geolocation.latt && geolocation.longt && (
-        <div className="flex w-full h-[400px] mt-[50px] rounded-lg overflow-hidden">
+        <div className="flex md:w-10/12 w-full h-[500px] mt-[50px] rounded-lg overflow-hidden animate-fade">
           <GoogleMaps geolocation={geolocation} />
         </div>
       )}
