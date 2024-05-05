@@ -1,0 +1,4 @@
+input[type="search"]::-webkit-search-cancel-button {
+  cursor: pointer;
+  filter: invert(100%) sepia(100%) grayscale(100%) saturate(500%) hue-rotate(90deg);
+}

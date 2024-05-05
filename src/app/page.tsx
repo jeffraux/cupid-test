@@ -1,10 +1,16 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
 import { Country, State, ListItem } from "./types";
-import { getData } from "./api";
+import { getData, getGeolocation } from "./api";
 
+import Button from "./components/Button";
+import LoadingIcon from "./components/LoadingIcon";
 import SearchDropdown from "./components/SearchDropdown";
+import GoogleMaps from "./components/GoogleMaps";
+
+import search from "../../public/icons/search.svg";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -13,6 +19,10 @@ const Home = () => {
   const [selectedCountry, setSelectedCountry] = useState<Country>();
   const [selectedState, setSelectedState] = useState<State>();
   const [searchKey, setSearchKey] = useState({ country: '', state: '' });
+  const [geolocation, setGeolocation] = useState({
+    latt: '',
+    longt: '',
+  });
 
   useEffect(() => {
     setLoading(true);
@@ -49,12 +59,24 @@ const Home = () => {
   const handleChangeInput = (field: string, event: React.ChangeEvent<HTMLInputElement>) => {
     if (field === 'country') {
       setSearchKey({ country: event.target.value, state: '' });
+      setSelectedCountry(undefined);
     } else {
       setSearchKey({ ...searchKey, state: event.target.value });
     }
 
-    setSelectedCountry(undefined);
     setSelectedState(undefined);
+  }
+
+  const handleSubmit = () => {
+    setLoading(true);
+    getGeolocation(`${selectedState?.value}, ${selectedCountry?.value}`).then((data) => {
+      if (data.length) {
+        const geo = data[0];
+        setGeolocation({ latt: geo.lat, longt: geo.lon });
+      }
+    }).finally(() => {
+      setLoading(false);
+    });
   }
 
   return (
@@ -65,7 +87,7 @@ const Home = () => {
             placeholder="Search country"
             list={countries}
             loading={loading}
-            inputClassName="rounded-s-lg min-w-60"
+            inputClassName="rounded-s-lg"
             onChangeSelect={(listItem) => handleChangeSelected('country', listItem)}
             searchKey={searchKey.country}
             onChangeInput={(event) => handleChangeInput('country', event)}
@@ -75,14 +97,25 @@ const Home = () => {
             list={states}
             loading={loading}
             showButton
-            inputClassName="rounded-e-lg min-w-80"
             onChangeSelect={(listItem) => handleChangeSelected('state', listItem)}
             searchKey={searchKey.state}
             onChangeInput={(event) => handleChangeInput('state', event)}
-            searchDisabled={!selectedState}
           />
+          <Button
+            type="submit"
+            disabled={loading || !selectedState}
+            onClick={handleSubmit}
+            className="p-[12px] text-sm font-medium text-white disabled:bg-gray-600 disabled:border-gray-600 disabled:hover:bg-gray-600 bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            {!loading ? <Image priority src={search} alt="ic-search" /> : <LoadingIcon />}
+          </Button>
         </div>
       </form>
+      {geolocation.latt && geolocation.longt && (
+        <div className="flex w-full h-[400px] mt-[50px] rounded-lg overflow-hidden">
+          <GoogleMaps geolocation={geolocation} />
+        </div>
+      )}
     </main>
   );
 }

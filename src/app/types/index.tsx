@@ -22,17 +22,17 @@ export interface SearchDropdownProps {
   placeholder?: string;
   /** selected value string */
   list: ListItem[];
-  /** If search button is in disabled state */
-  searchDisabled?: boolean;
   /** loading state */
   loading?: boolean;
   /** If search field will display the icon button */
   showButton?: boolean;
   /** custom class names for input component */
   inputClassName?: string;
-
+  /** search key string */
   searchKey: string;
+  /** event fired when an option is selected */
   onChangeSelect: (listItem: ListItem) => void;
+  /** event fired when changing search input value */
   onChangeInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -44,4 +44,11 @@ export interface FormProps {
   countries: Country[];
   /** list of States */
   states: State[];
+}
+
+export interface GeolocationProps {
+  geolocation: {
+    latt: string;
+    longt: string;
+  };
 }
