@@ -1,15 +1,13 @@
 "use client";
 import React, { Fragment, useState } from "react";
-import Image from 'next/image';
+import Image from "next/image";
 
 import { DropdownProps } from "@/app/types";
 
 import Button from "../Button";
-import chevronDown from '../../../../public/icons/chevron-down.svg';
+import chevronDown from "../../../../public/icons/chevron-down.svg";
 
-const countries = ['United States', 'Italy', 'Philippines']
-
-const Dropdown = ({ placeholder, selected }: DropdownProps) => {
+const Dropdown = ({ placeholder, selected, list }: DropdownProps) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   return (
@@ -24,15 +22,15 @@ const Dropdown = ({ placeholder, selected }: DropdownProps) => {
       {showDropdown && (
         <div className="bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 absolute mt-[42px]">
           <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-            {countries.map((country) => (
-              <li key={country}>
+            {list.map((listItem) => (
+              <li key={listItem.id}>
                 <button
                   type="button"
                   className="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
                   role="menuitem"
                 >
                   <div className="inline-flex items-center">
-                    {country}
+                    {listItem.value}
                   </div>
                 </button>
               </li>
