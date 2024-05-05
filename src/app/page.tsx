@@ -22,6 +22,17 @@ const Home = () => {
     });
   }, []);
 
+  useEffect(() => {
+    if (selectedCountry) {
+      setLoading(true);
+      getData(`/countries/${selectedCountry?.id}/states`).then((data) => {
+        setStates(data);
+      }).finally(() => {
+        setLoading(false);
+      });
+    }
+  }, [selectedCountry]);
+
   const handleSelectCountry = (country: Country) => {
     setSelectedCountry(country);
   }
@@ -36,7 +47,6 @@ const Home = () => {
           <SearchDropdown
             placeholder="Search country"
             list={countries}
-            selected={selectedCountry?.value}
             onChange={handleSelectCountry}
             loading={loading}
             inputClassName="rounded-s-lg min-w-60"
@@ -44,7 +54,6 @@ const Home = () => {
           <SearchDropdown
             placeholder="Search state"
             list={states}
-            selected={selectedState?.value}
             onChange={handleSelectState}
             loading={loading}
             showButton

@@ -21,8 +21,6 @@ export interface DropdownProps {
   /** displayed string if no item is selected */
   placeholder?: string;
   /** selected value string */
-  selected?: string;
-  /** selected value string */
   list: ListItem[];
   /** handle onChange event */
   onChange: (listItem: ListItem) => void

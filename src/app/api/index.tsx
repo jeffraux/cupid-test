@@ -4,7 +4,6 @@ const DEFAULT_HEADERS = {
 };
 
 const getData = async (url: string) => {
-  // const response = await fetch(`${BASE_URL}${url}/13/states`, {
   const response = await fetch(`${BASE_URL}${url}`, {
     headers: DEFAULT_HEADERS,
   });
