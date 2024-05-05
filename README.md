@@ -56,3 +56,11 @@ Directory of all components used in the app.
 /src/app/types
 ```
 Defines all types and interfaces used all throughout the app.
+
+## How the app works
+
+Kept it simple to just display all the fields in one line. The dropdown fields also functions as a search filter for ease of use.
+
+The app will automatically fetch the list of countries. Selecting a country will call the API for fetching its states. Clicking the search button will call an API to get the Country-State geolocation, once the API retrieves the latitude and longitude, a Google Map web widget will display and center itself based on the geolocation.
+
+Note: The Google Map web widget has gestures disabled to reduce the number of API calls to the Google Map API since it's limited because I'm only using their free plan.
