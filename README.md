@@ -27,13 +27,13 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 Check out the project here: [link](https://link/)
 
-## The Approach: ReactJS + NextJS
+# The Approach: ReactJS + NextJS
 
-# Why NextJS?
+## Why NextJS?
 
 Creating a production-ready app with NextJS is as simple as running a single command `npx create-next-app`. The NextJS framework has a built-in support for TypeScript and CSS/Sass. Its also very easy to scale a project using this framework since it already supports server-side rendering, automatic code splitting, and static site generation. Another plus is its file-system based routing which simplifies navigation.
 
-# Folder Structure
+## Folder Structure
 
 The project aims to create a maintanable folder structure by segregating files into multiple folders. Having the right files in the correct folder helps organize the code and makes it relatively easier for developers to have an idea where things are.
 
