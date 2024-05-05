@@ -1,14 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
 
 import { SearchDropdownProps, ListItem } from "@/app/types";
 
 import Button from "../Button";
 import Input from "../Input";
-import LoadingIcon from "../LoadingIcon";
-
-import search from "../../../../public/icons/search.svg";
 
 const SearchDropdown = ({
   placeholder,
@@ -19,7 +15,6 @@ const SearchDropdown = ({
   loading,
   showButton,
   inputClassName,
-  searchDisabled,
 }: SearchDropdownProps) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -44,15 +39,6 @@ const SearchDropdown = ({
           type="search"
           onChange={onChangeInput}
         />
-        {showButton && (
-          <Button
-            type="submit"
-            disabled={loading || searchDisabled}
-            className="absolute top-0 end-0 h-full p-2.5 text-sm font-medium text-white disabled:bg-gray-600 disabled:border-gray-600 disabled:hover:bg-gray-600 bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            {!loading ? <Image priority src={search} alt="ic-search" /> : <LoadingIcon />}
-          </Button>
-        )}
       </div>
       {showDropdown && (loading ? (
         <div className="min-w-[240px] max-h-60 overflow-auto overflow-x-hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 absolute">
@@ -70,7 +56,7 @@ const SearchDropdown = ({
           </ul>
         </div>
       ) : !!list.length && (
-        <div className="min-w-[240px] max-h-60 overflow-auto overflow-x-hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 absolute">
+        <div className="min-w-[240px] z-50 max-h-60 overflow-auto overflow-x-hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 absolute">
           <ul className="py-2 text-md text-gray-700 dark:text-gray-200">
             {list
               .filter((listItem) => handleFilterItems(listItem))

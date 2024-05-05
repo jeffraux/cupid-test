@@ -16,6 +16,17 @@ const getData = async (url: string) => {
   }
 }
 
+const getGeolocation = async (address: string) => {
+  try {
+    const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURI(address)}&format=json&limit=1&polygon_svg=1`);
+    const jsonResponse = await response.json();
+    return jsonResponse;
+  } catch (error) {
+    console.warn(error);
+  }
+}
+
 export {
   getData,
+  getGeolocation,
 };

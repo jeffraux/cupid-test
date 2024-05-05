@@ -1,6 +1,8 @@
 import React, { forwardRef } from "react";
 import { InputProps } from "@/app/types";
 
+import "./Input.css";
+
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, ...rest }, ref) => {
     return (
