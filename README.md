@@ -55,6 +55,11 @@ The project aims to create a maintainable folder structure by segregating files 
 Landing page for the app.
 
 ```bash
+/src/app/__tests__
+```
+Contains all the tests for the app.
+
+```bash
 /src/app/api
 ```
 Contains all API related functions like GET, POST, etc.
