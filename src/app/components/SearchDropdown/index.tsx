@@ -13,7 +13,7 @@ const SearchDropdown = ({
   onChangeInput,
   searchKey,
   loading,
-  showButton,
+  name,
   inputClassName,
 }: SearchDropdownProps) => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -32,7 +32,9 @@ const SearchDropdown = ({
     <div onBlur={handleDropdownClose}>
       <div className="relative w-full">
         <Input
-          className={inputClassName}
+          // name={name}
+          aria-label={name}
+          className={inputClassName || ''}
           placeholder={placeholder}
           value={searchKey}
           onFocus={() => setShowDropdown(true)}
