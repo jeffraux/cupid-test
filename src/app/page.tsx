@@ -84,6 +84,7 @@ const Home = () => {
       <form className="mx-auto">
         <div className="flex">
           <SearchDropdown
+            name="country"
             placeholder="Country"
             list={countries}
             loading={loading}
@@ -93,10 +94,10 @@ const Home = () => {
             onChangeInput={(event) => handleChangeInput('country', event)}
           />
           <SearchDropdown
+            name="state"
             placeholder="State"
             list={states}
             loading={loading}
-            showButton
             onChangeSelect={(listItem) => handleChangeSelected('state', listItem)}
             searchKey={searchKey.state}
             onChangeInput={(event) => handleChangeInput('state', event)}

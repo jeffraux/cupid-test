@@ -18,14 +18,14 @@ export type ListItem = {
 }
 
 export interface SearchDropdownProps {
+  /** input element name identifier */
+  name: string;
   /** displayed string if no item is selected */
   placeholder?: string;
   /** selected value string */
   list: ListItem[];
   /** loading state */
   loading?: boolean;
-  /** If search field will display the icon button */
-  showButton?: boolean;
   /** custom class names for input component */
   inputClassName?: string;
   /** search key string */
