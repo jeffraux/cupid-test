@@ -2,8 +2,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-Node: v18.17.0
-npm: v9.6.7
+`Node: v18.17.0`
+
+`npm: v9.6.7`
 
 Install dependencies:
 ```bash
