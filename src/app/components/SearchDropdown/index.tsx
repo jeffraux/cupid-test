@@ -32,7 +32,6 @@ const SearchDropdown = ({
     <div onBlur={handleDropdownClose}>
       <div className="relative w-full">
         <Input
-          // name={name}
           aria-label={name}
           className={inputClassName || ''}
           placeholder={placeholder}

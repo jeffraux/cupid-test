@@ -101,7 +101,7 @@ const GoogleMaps = ({ geolocation }: GeolocationProps) => {
   return (
     <GoogleMapReact
       bootstrapURLKeys={{
-        key: "AIzaSyCNrcIzh8zCQJMyIFMGvjX1D4K4Bc6pVss",
+        key: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
         libraries:['places']
       }}
       yesIWantToUseGoogleMapApiInternals
