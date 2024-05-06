@@ -23,6 +23,18 @@ yarn dev
 pnpm dev
 ```
 
+Run the test suite:
+
+```bash
+npm run test
+# or
+yarn test
+# or
+npm run test:watch
+# or
+yarn test:watch
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
